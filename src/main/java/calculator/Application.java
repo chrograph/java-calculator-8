@@ -7,6 +7,10 @@ public class Application {
         System.out.println("덧셈할 문자열을 입력해 주세요.");
         String input = Console.readLine();
 
+        if (checkSpecialCase(input)) {
+            return;
+        }
+
         String changeInput = changeDelimiter(input);
 
         String[] splitInput =  changeInput.split(",");
@@ -20,6 +24,19 @@ public class Application {
             sum += Integer.parseInt(splitInput[i]);
         }
         System.out.println("결과 : " + sum);
+    }
+
+    //추가
+    private static boolean checkSpecialCase(String input) {
+        if (input == null || input.trim().isEmpty()) {
+            System.out.println("결과 : 0");
+            return true;
+        }
+        if (input.matches("[0-9]+")) {
+            System.out.println("결과 : " + input);
+            return true;
+        }
+        return false;
     }
 
     private static void checkException(String token) {
