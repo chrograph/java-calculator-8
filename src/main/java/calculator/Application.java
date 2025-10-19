@@ -29,6 +29,9 @@ public class Application {
         if (token.startsWith("-")) {
             throw new IllegalArgumentException();
         }
+        if (!token.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException();
+        }
     }
 
 
